@@ -1,0 +1,28 @@
+<aura:component controller="AccountContactsController" extends="c:Pagination" >
+	<aura:attribute name="accounts" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+        <thead>
+            <tr class="slds-text-heading--label">
+                <th scope="col"><div class="slds-truncate" title="Name">Name</div></th>
+                <th scope="col"><div class="slds-truncate" title="Type">Type</div></th>
+                <th scope="col"><div class="slds-truncate" title="Phone">Phone</div></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Use the Apex model and controller to fetch server side data -->
+            <aura:iteration items="{!v.pag_selectedList}" var="account">
+                <tr>
+                    <td>
+                        <div class="slds-truncate">
+                        	<a href="{!'/'+account.Id}" target="_blank">{!account.Name}</a>
+                        </div>
+                    </td>
+                    <td><div class="slds-truncate" title="{!account.Type}">{!account.Type}</div></td>
+                    <td><div class="slds-truncate" title="{!account.Phone}">{!account.Phone}</div></td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

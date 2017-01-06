@@ -1,0 +1,20 @@
+<aura:component extensible="true">
+    
+    <aura:attribute name="pag_HasPrevious" type="Boolean" default="false"/>
+    <aura:attribute name="pag_HasNext" type="Boolean" default="false"/>
+    <aura:attribute name="pag_offset" type="Integer" default="0" />
+    <aura:attribute name="pag_lim" type="Integer" default="5" />
+    <aura:attribute name="pag_sObjectList" type="List" />
+    <aura:attribute name="pag_selectedList" type="List" />
+    <aura:attribute name="pag_TotalRecords" type="Integer"/>
+    <aura:attribute name="pag_PrevBtnLabel" type="String"/>
+    <aura:attribute name="pag_NextBtnLabel" type="String"/>
+    
+  	{!v.body}
+    
+    <br/>
+    <div class="pagination slds-text-align--center">
+        <lightning:button label="{!v.pag_PrevBtnLabel}" disabled="{!v.pag_HasPrevious == false}" onclick="{!c.doPrevious}" />
+        <lightning:button label="{!v.pag_NextBtnLabel}" disabled="{!v.pag_HasNext == false}" onclick="{!c.doNext}" />
+    </div>
+</aura:component>
